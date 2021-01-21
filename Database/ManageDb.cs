@@ -1,43 +1,43 @@
 ﻿using _20210120_Linq.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace _20210121_EntityFramework.Database
 {
     public class ManageDb
     {
-        public static void AddPerson (string firstName, string lastName, int age )
 
+                
+        //Sukuriami masyvai po 14 narių ir atsitiktine tvarka užpildoma 200 eilučių duomenų bazė. Amžius taip pat priskiriamas atsitiktine tvarka nuo 8 iki 85 metų.
+        public static void Add200PersonsToDB()
         {
-           using( var context = new MokymaiContext())
+
+            int constPersonsCount = 200;
+            int constMinAge = 5;
+            int constMaxAge = 85;
+            Random rng = new Random();
+
+            string[] firstNames = {"Jonas", "Pranas", "Vardas", "Tomas", "Algis", "Simas", "Vytas", "Vytautas", "Kęstutis", "Dainius", "Darius", "Jonas", "Petras", "Giedrius"};
+            string[] lastNames = {"Jonaitis", "Pranaitis", "Pavardenis", "Tomaitis", "Algaitis", "Simaitis", "Vytaitis", "Lapinas", "Vilkas", "Remeikis", "Daraitis", "Antanaitis", "Petraitis", "Giedraitis"};
+
+
+            using (var context = new MokymaiContext())
             {
-                var person = new Person
+                for (int p = 0; p < constPersonsCount; p++)
                 {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Age = age,
-                };
-                context.Persons.Add(person);
+                var person = new Person
+                    {
+                        FirstName = firstNames[rng.Next(firstNames.Count())],
+                        LastName = lastNames[rng.Next(lastNames.Count())],
+                        Age = rng.Next(constMinAge, constMaxAge),
+                    };
+                    context.Persons.Add(person);
+                    
+                }  
                 context.SaveChanges();
             }
-
         }
 
-        public static void GetPersons()
-        {
-            using (var ctx = new MokymaiContext())
-            {
-                var persons = ctx.Persons.Where(p => p.Age < 30);
-
-                foreach (var person in persons)
-                {
-                    Console.WriteLine("{0}", person.LastName);
-                }
-
-            }
-        }
     }
+
 }

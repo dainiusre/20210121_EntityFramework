@@ -56,6 +56,8 @@
     <Compile Include="Database\ManageDb.cs" />
     <Compile Include="Database\Models\Persons.cs" />
     <Compile Include="Database\MokymaiContext.cs" />
+    <Compile Include="Database\QueryDb.cs" />
+    <Compile Include="InitialData\PersonalInitialData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

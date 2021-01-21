@@ -11,21 +11,15 @@ namespace _20210121_EntityFramework
     {
         static void Main(string[] args)
         {
-            ManageDb.AddPerson("Petras", "Petraitis", 20);
-            Console.WriteLine("SQL pvz");
+            ManageDb.Add200PersonsToDB();
+            QueryDb.GetPersonsYoungest();
+            QueryDb.GetPersonsOldest();
+            QueryDb.GetPersonMagicAge();
+            QueryDb.GetPersonsShortestName();
+            QueryDb.GetPersonLongestName();
+
+            Console.WriteLine("Procedūros atliktos");
             Console.ReadLine();
-        }
-
-
-        public static void UpdatePersonsAge()
-        {
-
-            //using(var ctx = new MokymaiContext()
-            //{
-            //    var persons = ctx.Persons.Where(p => )
-            //}
-
-
         }
     }
 }

@@ -12,6 +12,7 @@ namespace _20210121_EntityFramework.Database
     {
         public MokymaiContext(): base("Mokymai")
         {
+
         }
 
         public DbSet<Person> Persons { get; set; }
